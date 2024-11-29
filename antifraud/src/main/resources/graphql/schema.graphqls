@@ -1,0 +1,20 @@
+type TransactionResponse {
+  transactionExternalId: ID!
+  transactionStatus: String!
+  value: Float!
+  createdAt: String!
+}
+
+type TransactionRequest {
+  value: Float!
+}
+
+type Query {
+  transaction(transactionExternalId: ID!): TransactionResponse
+  transactions: [TransactionResponse!]! # Para leer múltiples transacciones
+}
+
+type Mutation {
+  createTransaction(value: Float!): TransactionResponse
+  updateTransaction(transactionExternalId: ID!, value: Float!): TransactionResponse # Para actualizar una transacción existente
+}
